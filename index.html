@@ -3,25 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
     <title>Bank Account</title>
   </head>
   <body>
+    <header>
+      <h1>Welcome to the Bank App!</h1>
+      <h2><strong>Balance:</strong><span id="balance">0</span>₼</h2>
 
-   <header>
-    <h1>Welcome to the Bank App!</h1>
-    <h2><strong>Balance:</strong><div id="balance">0</div>₼</h2>
-    <div class="icons">
-        <span id="deposit">Deposit</span>
-        <span id="withdraw">Withdraw</span>
-        <span id="history">History</span>
-    </div>
-   </header>
+      <div class="container">
+        <form>
+          <label for="deposit">Deposit</label>
+          <input type="number" id="deposit" placeholder="Enter amount" />
+          <button id="depositBtn" type="button">OK</button>
+        </form>
+        <form>
+          <label for="withdraw">Withdraw</label>
+          <input type="number" id="withdraw" placeholder="Enter amount" />
+          <button id="withdrawBtn" type="button">OK</button>
+        </form>
+      </div>
+      <h2>Transaction History</h2>
+      <div class="tablehistory">
+        <table id="transaction">
+          <thead>
+           <tr>
+             <th>Type</th>
+             <th>Amount</th>
+             <th>Balance After</th>
+           </tr>
+          </thead>
+          <tbody>
+          </tbody>
+         </table>
+      </div>
+    </header>
 
     <div class="figure">
       <div id="cardEl" class="card">
-       <img class="front" src="https://www.kapitalbank.az/images/cards/M/visa-business1642748176.png" alt="front"/>
-       <img class="back" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0oA_yLXrRrxaxBO4mKgIyE9JnNk0oZGHMbg&s" alt="back"/>
+        <img
+          class="front"
+          src="https://www.kapitalbank.az/images/cards/M/visa-business1642748176.png"
+          alt="front"
+        />
+        <img
+          class="back"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0oA_yLXrRrxaxBO4mKgIyE9JnNk0oZGHMbg&s"
+          alt="back"
+        />
       </div>
     </div>
 

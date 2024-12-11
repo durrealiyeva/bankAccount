@@ -1,47 +1,60 @@
 const bankAccount = {
   balance: 0,
-  amountEntered: 0,
-  amountDrawn: 0,
   transactions: [],
   deposit: function (money) {
-    this.amountEntered +=  money;
-    alert(`Deposited: ${money}₼`);
-    this.balance += money;
-    this.transactions.push(`+${money}₼`);
+   if(money>0){
+    this.balance += money
+    this.transactions.push({
+      type: "Deposit",
+      amount: money,
+      balance: this.balance,
+    })
+   }
     this.updateBalance();
   },
   withdraw: function (money) {
-    if (this.balance < money) {
-      alert("Not enough balance to withdraw!");
-    } else {
-      this.amountDrawn -=  money;
-      alert(`Withdrew: ${money}₼`);
-      this.balance -= money;
-      this.transactions.push(`${-money}₼`);
-      this.updateBalance();
-    }
-  },
-  viewTransactionsHistory: function () {
-    alert(`Transaction history: ${this.transactions.join(",")}`);
+   if(money>0 && money<=this.balance){
+    this.balance -= money
+    this.transactions.push({
+      type: "Withdraw",
+      amount: money,
+      balance: this.balance,
+    })
+   }
+    this.updateBalance();
   },
   updateBalance: function () {
     const balanceEl = document.querySelector("#balance");
     balanceEl.innerHTML = this.balance;
-  },
-};
+
+    const transactions = document.querySelector("#transaction tbody");
+    transactions.innerHTML = this.transactions
+    .map(
+      (el) => 
+      ` <tr>
+             <td>${el.type}</td>
+             <td>${el.amount}</td>
+             <td>${el.balance}</td>
+           </tr>
+           `
+    )
+    .join('')
+  }
+}
 
 const depositEl = document.querySelector("#deposit");
 const withdrawEl = document.querySelector("#withdraw");
-const historyEl = document.querySelector("#history");
+const depositBtnEl = document.querySelector("#depositBtn");
+const withdrawBtnEl = document.querySelector("#withdrawBtn");
 
-depositEl.onclick = () => {
-  const mani = Number(prompt("Enter the amount to deposit"));
-  bankAccount.deposit(mani);
-};
-withdrawEl.onclick = () => {
-  const mani = Number(prompt("Enter the amount to deposit"));
-  bankAccount.withdraw(mani);
-};
-historyEl.onclick = () => {
-  bankAccount.viewTransactionsHistory();
-};
+depositBtnEl.onclick = () => {
+  const depositAmount = Number(depositEl.value);
+  bankAccount.deposit(depositAmount);
+  depositEl.value=''
+  
+}
+withdrawBtnEl.onclick = () => {
+  const withdrawAmount = Number(withdrawEl.value);
+  bankAccount.withdraw(withdrawAmount);
+  withdrawEl.value = ''
+}
