@@ -23,21 +23,31 @@
           <button id="withdrawBtn" type="button">OK</button>
         </form>
       </div>
+
       <h2>Transaction History</h2>
       <div class="tablehistory">
         <table id="transaction">
           <thead>
-           <tr>
-             <th>Type</th>
-             <th>Amount</th>
-             <th>Balance After</th>
-           </tr>
+            <tr>
+              <th>Type</th>
+              <th>Amount</th>
+              <th>Balance After</th>
+            </tr>
           </thead>
-          <tbody>
-          </tbody>
-         </table>
+          <tbody></tbody>
+        </table>
       </div>
+
     </header>
+
+    <div id="fon" class="fon"></div>
+    
+    <div id="error-message" class="error">
+      <p>Your balance is insufficient for this withdrawal.</p>
+      <button id ="ok" type="button">
+        OK
+      </button>
+    </div>
 
     <div class="figure">
       <div id="cardEl" class="card">
