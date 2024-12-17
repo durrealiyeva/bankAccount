@@ -8,6 +8,7 @@ const bankAccount = {
         type: "Deposit",
         amount: money,
         balance: this.balance,
+        date:new Date()
       });
     }
     this.updateBalance();
@@ -22,6 +23,7 @@ const bankAccount = {
         type: "Withdraw",
         amount: money,
         balance: this.balance,
+        date:new Date()
       });
     } else {
       errorMessage.style.display = "block";
@@ -40,10 +42,17 @@ const bankAccount = {
     const transactions = document.querySelector("#transaction tbody");
     transactions.innerHTML = this.transactions
       .map((el) => {
+        const time=el.date
+        const day=time.getDate()
+        const month=time.getMonth()
+        const year=time.getFullYear()
+        const fulltime=`${day}.${month}.${year}`
+        
         return ` <tr>
              <td>${el.type}</td>
              <td>${el.amount}</td>
              <td>${el.balance}</td>
+             <td>${fulltime}</td>
            </tr>
            `;
       })
