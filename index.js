@@ -44,7 +44,7 @@ const bankAccount = {
       .map((el) => {
         const time=el.date
         const day=time.getDate()
-        const month=time.getMonth()
+        const month=time.getMonth()+1
         const year=time.getFullYear()
         const fulltime=`${day}.${month}.${year}`
         
